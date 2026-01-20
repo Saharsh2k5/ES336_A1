@@ -1,0 +1,55 @@
+1. For normal C code execution without any optmisation flags time ./code
+
+Matrix multiplication time: 3.705406 seconds
+    real    0m0.102s
+    user    0m0.092s
+    sys     0m0.010s
+
+
+2. For normal Python code time python3 codepython.py
+
+Multiplication took  205.15121483802795 seconds
+
+    real    3m25.336s
+    user    3m25.221s
+    sys     0m0.091s
+
+3. For numpy library used in Python code time python3 codepython_numpy.py
+
+Multiplication took  2.7431342601776123 seconds
+
+    real    0m2.925s
+    user    0m3.494s
+    sys     0m0.021s
+
+4. For the C code with O2 optmisation flag 
+
+O2 flag
+Matrix multiplication time: 1.125915 seconds
+
+    real    0m1.142s
+    user    0m1.136s
+    sys     0m0.000s
+
+5. For the C code with O3 optmisation flag 
+
+O3 flag
+Matrix multiplication time: 1.113456 seconds
+
+    real    0m1.129s
+    user    0m1.122s
+    sys     0m0.000s
+
+Comparing the execution time of the C & Python programs
+
+C has taken  3.7s and Python took  205.1s to complete the same task 
+Reason : 
+C used a Compiler and Python uses a interpreter, so compiler would translate the high language code into machine code which executes directly on CPU whereas interpreter would execute statements line by line hence takes time more time.
+
+When used numpy library's built in methods the time has drastically fallen to 2.7s because the library is written in 
+highly optimised C code which made it 75x faster.
+It make use of vectorization and cache  benifits.
+
+When we use different optmisation levels like O2 and O3 the time taken is less than the numpy library usage i.e around ~1.1s.
+When used these flags it does the things like dead code elimination, altering the order of instructions and vectorization.
+Important distinction is that for O2 and O3 flags there is no sys time used.
